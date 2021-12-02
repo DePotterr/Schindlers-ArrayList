@@ -6,6 +6,8 @@ import Intro from "./Intro";
 import Cluedo from "./Cluedo/Cluedo";
 import Clues from "./Clues/Clues";
 import { useSettings } from "./context/useSettings";
+import axios from "axios";
+import { getClues } from "../Services/CluedoService";
 
 export const CluesContext = React.createContext();
 
@@ -36,7 +38,8 @@ export const Main = () => {
 
   useEffect(() => {
     if (settings) {
-      // De settings zijn geladen, haal hier de aanwijzingen op en bewaar ze in de state (setClues)
+      const response = getClues()
+      setClues(response.data);
     }
   }, [settings]);
 
