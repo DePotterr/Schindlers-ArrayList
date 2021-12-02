@@ -25,6 +25,9 @@ const CluedoActive = ({ gameKey, onEndGame, onArrest }) => {
           gameKey={gameKey}
           selectedRoom={room}
           onSuggestion={() => setRoom(null)}
+          addSuggestion={(suggestion) => {
+            setLog(oldLog => [...oldLog, suggestion]);
+          }}
         />
       )}
       {isArrest && <MakeArrestForm gameKey={gameKey} onArrest={onArrest} />}

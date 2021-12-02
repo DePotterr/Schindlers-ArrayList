@@ -15,7 +15,7 @@ const CluedoStart = ({ onStart }) => {
         },
       })
       .then((data) => {
-        onStart(data);
+        onStart(data.data.key);
       }).catch(error => {
         console.log(error)
       });
