@@ -13,7 +13,7 @@ export const CluesContext = React.createContext();
 
 export const Main = () => {
   const { settings, setSettings } = useSettings();
-  const [clues, setClues] = useState();
+  const [clues, setClues] = useState([]);
 
   useEffect(() => {
     setSettings({
@@ -38,8 +38,18 @@ export const Main = () => {
 
   useEffect(() => {
     if (settings) {
-      const response = getClues()
-      setClues(response.data);
+      axios
+        .get(process.env.REACT_APP_BASE_URL + process.env.REACT_APP_URL_CLUES, {
+          auth: {
+            username: process.env.REACT_APP_USERNAME,
+            password: process.env.REACT_APP_PASSWORD,
+          },
+        })
+        .then((response) => {
+          console.log(response.data)
+          setClues(response.data);
+        })
+        .catch((error) => console.log(error));
     }
   }, [settings]);
 
