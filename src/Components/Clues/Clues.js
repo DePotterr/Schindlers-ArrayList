@@ -1,35 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CluesContext } from "../Main";
-
-/*
-   AANWIJZINGEN
-   ------------
-   Lijst hier de kamers, wapens en verdachten op.
-*/
-
-// const j = {color: null
-//   description: ""
-//   id: "1"
-//   image: "/sites/default/files/2021-11/dolk.jpg"
-//   title: "Dolk"
-//   type: "weapon"
-//   }
+import "./Clues.css";
 
 const Clues = () => {
+  const clues = useContext(CluesContext);
+
   return (
     <div className="full file">
       <h2>Aanwijzingen</h2>
-      <CluesContext.Consumer>
-        {(clues) => (
-          <div className="clues-list">
-            {clues.map((clue) => (
-              <div className="Clues-item">
-                {clue.title} {clue.description} {clue.type}
-              </div>
-            ))}
+      <div className="clues-list">
+        {clues.map((clue) => (
+          <div className="clues-item">
+            <div>
+              <span>{clue.title}</span>
+              <span>{clue.type}</span>
+            </div>
+            <img
+              src={process.env.REACT_APP_BASE_URL + clue.image}
+              alt={clue.title}
+            />
           </div>
-        )}
-      </CluesContext.Consumer>
+        ))}
+      </div>
     </div>
   );
 };

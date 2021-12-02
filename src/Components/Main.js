@@ -7,7 +7,6 @@ import Cluedo from "./Cluedo/Cluedo";
 import Clues from "./Clues/Clues";
 import { useSettings } from "./context/useSettings";
 import axios from "axios";
-import { getClues } from "../Services/CluedoService";
 
 export const CluesContext = React.createContext();
 

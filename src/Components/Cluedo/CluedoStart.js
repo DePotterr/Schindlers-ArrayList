@@ -1,19 +1,24 @@
 import React from "react";
-import {useSettings} from "../context/useSettings";
+import { useSettings } from "../context/useSettings";
 import Button from "../Button";
-
-/*
-   CLUEDO START
-   ------------
-   In dit component moet je een nieuw spel genereren via de api.
-   Geef de nieuwe gameKey mee aan de onStart functie (zie props).
-*/
+import axios from "axios";
 
 const CluedoStart = ({ onStart }) => {
   const { settings } = useSettings();
 
   const startGame = () => {
-    //
+    axios
+      .get(settings.baseURL + settings.url.new, {
+        auth: {
+          username: process.env.REACT_APP_USERNAME,
+          password: process.env.REACT_APP_PASSWORD,
+        },
+      })
+      .then((data) => {
+        onStart(data);
+      }).catch(error => {
+        console.log(error)
+      });
   };
 
   return (

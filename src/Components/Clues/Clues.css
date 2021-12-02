@@ -1,4 +1,24 @@
-.Clues-list{
+.clues-list{
     display: flex;
     flex-direction: column;
+}
+
+.clues-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.clues-item div{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: black;
+    padding: 1em;
+    margin-right: 1em;
+}
+
+.clues-item span {
+    color: white;
 }
